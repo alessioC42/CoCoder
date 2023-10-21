@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/bootstrap.min.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CoCoder</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">CoCoder</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#opportunities">opportunities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#">FAQ's</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Explore</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center" id="navbar-user-logged-in" hidden>
+                <div class="m-1">
+                    User, Name
+                </div>
+                <img src="/assets/idea_lamp.png" height="40" width="40" class="img-fluid rounded-5">
+            </div>
+            <div id="navbar-user-no-logged-in">
+
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- CONTENT DIV -->
+<div class="container-md">
+        <div class="container px-5 my-5">
+            <h1 class="mt-3">Register</h1>
+            <form id="form" data-bs-theme="light">
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username <i>*</i></label>
+                    <input class="form-control" id="username" name="username" type="text" placeholder="Username" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">password <i>* </i><small> (in this prototype passwords are stored unencrypted)</small></label>
+                    <input class="form-control" id="password" name="password" type="password" placeholder="password" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="firstName">first name</label>
+                    <input class="form-control" id="firstName" name="first_name" type="text" placeholder="first name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="secondName">second name</label>
+                    <input class="form-control" id="secondName" name="second_name" type="text" placeholder="second name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="gender">gender</label>
+                    <input class="form-control" id="gender" name="gender" type="text" placeholder="gender" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="aboutYou">about you <i>*</i></label>
+                    <textarea class="form-control" id="aboutYou" name="about" type="text" placeholder="about you" style="height: 8rem;"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="interests">interests <i>*</i></label>
+                    <textarea class="form-control" id="interests" name="interests" type="text" placeholder="interests" style="height: 8rem;"></textarea>
+                </div>
+            </form>
+            <div class="d-grid">
+                <button class="btn btn-light" id="submitButton" data-bs-theme="dark">Submit</button>
+            </div>
+        </div>
+</div>
+<!-- FOOTER -->
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Caputo, Alessio</p>
+
+        <a href="/" class="col-md-3 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <!--<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> TODO: ADD ICON TO FOOTER-->
+        </a>
+
+        <ul class="nav col-md-5 justify-content-center">
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="/#opportunities" class="nav-link px-2 text-body-secondary">Opportunities</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+    </footer>
+</div>
+
+<script src="/style/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
