@@ -1,0 +1,24 @@
+{
+  "name": "codewithme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alessioc42/codewithme.git"
+  },
+  "author": "A. Caputo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alessioc42/codewithme/issues"
+  },
+  "homepage": "https://github.com/alessioc42/codewithme#readme",
+  "dependencies": {
+    "better-sqlite3": "^9.0.0",
+    "bootstrap": "^5.3.2",
+    "express": "^4.18.2"
+  }
+}

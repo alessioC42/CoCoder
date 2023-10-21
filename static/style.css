@@ -1,0 +1,22 @@
+#home {
+    background-image: url("assets/background.jpg");
+    background-size: cover;
+    height: 80vh;
+}
+
+.main-heading {
+    font-size: 64px;
+}
+
+.secondary-heading {
+    font-size: 42px;
+}
+
+.feature-text {
+    font-size: 22px;
+}
+
+.feature-image {
+    height: 150px;
+    width: 150px;
+}
