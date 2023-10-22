@@ -33,8 +33,13 @@ async function buildProjectCard(id){
                 <div>${languageBadgesHTML}</div>
                 <div>${topicBadgesHTML}</div>
             </div>
-            <div class="position-absolute top-0 end-0 m-1" style="cursor: pointer" onclick="window.location.href='mailto:${userData.email}'">
-            ${userData.username} ${messageSVG}
+            <div class="position-absolute top-0 end-0 m-1" style="cursor: pointer" >
+            <div class="d-inline" onclick="window.location.href='/profile/?id=${userData.id}'">
+                ${userData.username}
+            </div>
+            <div class="d-inline" onclick="window.location.href='mailto:${userData.email}'">
+                ${messageSVG}
+            </div>
             </div>
         </div>`
 
