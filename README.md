@@ -1,6 +1,8 @@
 # CoCoder
 Ever wanted to start a side project? You are not the only one with this idea? CoCoder allows you to share ideas with other developers and get connected to create a new beautiful application.
 
+Project for the Nighthacks 2023 Hackathon
+
 ## Setup
 you need nodejs
 
