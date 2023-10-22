@@ -18,7 +18,7 @@ document.getElementById("submitButton").addEventListener("click",  async() => {
     });
     if (response.status === 200) {
         let data = await response.json();
-        sessionStorage.setItem("userID", data.id);
+        localStorage.setItem("userID", data.id);
         window.location.href = "/profile/"+data.id;
     } else {
         alert(response.statusText);

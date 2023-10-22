@@ -35,7 +35,6 @@ function createUserInfoTable(userData) {
             tbody.appendChild(tr);
         }
     });
-
 }
 
 
