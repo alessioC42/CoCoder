@@ -1,9 +1,11 @@
 const express = require("express");
 const betterSQLite3 = require("better-sqlite3");
+const Fuse = require('fuse.js');
 
 const api = express.Router();
 
 const _db = betterSQLite3(process.cwd()+"/database.db", { "fileMustExist": true, "verbose": console.log });
+
 
 const db = {
     getUserById: _db.prepare('SELECT * FROM Accounts WHERE id=?;'),
@@ -94,6 +96,38 @@ api.post("/projects/create", express.urlencoded({ extended: true }), (req, res) 
     try {
         db.addProject.run(req.body);
         res.end();
+    } catch (e) {
+        console.error(e);
+        res.status(500).end();
+    }
+});
+
+api.get("/explore/search", (req, res) => {
+    try {
+        const { q } = req.query; // Get the search query from the client request
+        if (q) {
+            // Perform the search in the FTS table
+            const searchStmt = _db.prepare(`
+            SELECT *
+            FROM Projects_fts
+            WHERE Projects_fts MATCH @searchQuery
+        `);
+
+            const searchResults = searchStmt.all({ searchQuery: q });
+
+            const fuse = new Fuse(searchResults, {
+                keys: ["title", "about", "languages", "topics"],
+                includeScore: true,
+                threshold: 0.6,
+            });
+
+            const fuzzyResults = fuse.search(q);
+
+            res.json(fuzzyResults).end();
+        } else {
+            res.json([]).end();
+        }
+
     } catch (e) {
         console.error(e);
         res.status(500).end();
