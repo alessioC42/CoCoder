@@ -11,7 +11,8 @@ const db = {
     getUserIdByName: _db.prepare('SELECT id FROM Accounts WHERE username=?;'),
     getUserIdByEmailAndPassword: _db.prepare('SELECT id FROM Accounts WHERE email=@email AND password=@password'),
     getProjectById: _db.prepare('SELECT * FROM Projects WHERE id=?;'),
-    addProject: _db.prepare('INSERT INTO Projects (owner, title, about, languages, topics) VALUES (@userID, @title, @about, @languages, @topics);')
+    addProject: _db.prepare('INSERT INTO Projects (owner, title, about, languages, topics) VALUES (@userID, @title, @about, @languages, @topics);'),
+    getProjectsFromUserID: _db.prepare('SELECT id FROM Projects WHERE owner=?;')
 }
 
 api.get("/user/:id", (req, res) => {
@@ -28,6 +29,22 @@ api.get("/user/:id", (req, res) => {
         res.status(500).end();
     }
 });
+
+api.get("/user/:id/projects", (req, res) => {
+    try {
+        const { id } = req.params;
+        let data = db.getProjectsFromUserID.all(id);
+        if (data) {
+            res.json(data).end();
+        } else {
+            res.status(404).end();
+        }
+    } catch (e) {
+        console.error(e);
+        res.status(500).end();
+    }
+
+})
 
 api.post("/user/create", express.urlencoded({ extended: true }), (req, res) => {
     try {

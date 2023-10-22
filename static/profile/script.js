@@ -38,11 +38,22 @@ function createUserInfoTable(userData) {
     });
 }
 
+async function renderAllProjects() {
+    container = document.getElementById("container-projects");
+    container.innerHTML = "";
+    let response = await fetch(`/api/user/${userID}/projects`);
+    let data = await response.json();
+
+    for (const elem of data) {
+        container.appendChild(await buildProjectCard(elem.id));
+    }
+}
 
 (async () => {
     let response = await fetch(`/api/user/${userID}`);
     let userData = await response.json();
     if (response.status === 200) {
+        renderAllProjects();
         createUserInfoTable(userData);
         document.getElementById("title-username").innerText = userData.username;
         document.getElementById("user-about-me").innerText = userData.about;

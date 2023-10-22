@@ -7,6 +7,7 @@ async function buildProjectCard(id){
 
     const cardRoot = document.createElement("div");
     cardRoot.classList.add("card");
+    cardRoot.classList.add("mt-2")
     cardRoot.id = `card-project-${projectData.id}`;
 
     let languageBadgesHTML = "";
