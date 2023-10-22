@@ -33,14 +33,19 @@
                     <a class="nav-link" href="/explore">Explore</a>
                 </li>
             </ul>
-            <div class="d-flex align-items-center" id="navbar-user-logged-in" hidden>
-                <div class="m-1">
-                    User, Name
-                </div>
-                <img src="/assets/idea_lamp.png" height="40" width="40" class="img-fluid rounded-5">
-            </div>
-            <div id="navbar-user-no-logged-in">
+            <div class="d-flex align-items-center visually-hidden" id="navbar-user-logged-in">
+                <button class="btn d-inline" id="navbar-button-logout">logout</button>
+                <div id="navbar-user-click-to-profile">
+                    <div class="m-1 d-inline" id="navbar-user-name">
+                        username
+                    </div>
+                    <img src="/assets/idea_lamp.png" height="40" width="40" class="img-fluid rounded-5 d-inline">
 
+                </div>
+            </div>
+            <div id="navbar-user-not-logged-in">
+                <a class="btn d-inline" href="/register">Register</a>
+                <a class="btn d-inline" href="/login">login</a>
             </div>
         </div>
     </div>
@@ -101,5 +106,6 @@
 
 <script src="/style/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+<script src="/js/navbar_login_manager.js"></script>
 </body>
 </html>

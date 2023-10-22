@@ -1,16 +1,10 @@
 document.getElementById("submitButton").addEventListener("click",  async() => {
     const formData = new URLSearchParams();
 
-    formData.append("username", val("username"));
-    formData.append("password", val("password"));
-    formData.append("first_name", val("firstName"));
-    formData.append("second_name", val("secondName"));
-    formData.append("gender", val("gender"));
-    formData.append("about", val("aboutYou"));
-    formData.append("interests", val("interests"));
     formData.append("email", val("email"));
+    formData.append("password", val("password"));
 
-    let response = await fetch("/api/user/create", {
+    let response = await fetch("/api/login", {
         method: "POST",
         body: formData,
         headers: {

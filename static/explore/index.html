@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/style/bootstrap.min.css">
+    <link rel="stylesheet" href="/style/bootstrap-select.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/style/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,14 +35,19 @@
                     <a class="nav-link active" href="#">Explore</a>
                 </li>
             </ul>
-            <div class="d-flex align-items-center" id="navbar-user-logged-in" hidden>
-                <div class="m-1">
-                    User, Name
-                </div>
-                <img src="/assets/idea_lamp.png" height="40" width="40" class="img-fluid rounded-5">
-            </div>
-            <div id="navbar-user-no-logged-in">
+            <div class="d-flex align-items-center visually-hidden" id="navbar-user-logged-in">
+                <button class="btn d-inline" id="navbar-button-logout">logout</button>
+                <div id="navbar-user-click-to-profile">
+                    <div class="m-1 d-inline" id="navbar-user-name">
+                        username
+                    </div>
+                    <img src="/assets/idea_lamp.png" height="40" width="40" class="img-fluid rounded-5 d-inline">
 
+                </div>
+            </div>
+            <div id="navbar-user-not-logged-in">
+                <a class="btn d-inline" href="/register">Register</a>
+                <a class="btn d-inline" href="/login">login</a>
             </div>
         </div>
     </div>
@@ -58,25 +64,25 @@
                 <a class="nav-link" data-bs-toggle="tab" href="#create_tab" aria-selected="false" role="tab" tabindex="-1">create</a>
             </li>
         </ul>
-        <div id="myTabContent" class="tab-content">
+        <div class="tab-content">
             <div class="tab-pane fade active show" id="explore_tab" role="tabpanel">
                 <div class="row">
                     <div class="col-3" data-bs-theme="light">
                         <div class="card mt-2">
                             <div class="card-body">
                                 <h3 class="card-title">search</h3>
-                                <form class="d-flex">
-                                    <input class="form-control me-sm-2" type="search" placeholder="Search by title">
+                                <div class="d-flex">
+                                    <input class="form-control me-sm-2" type="search" placeholder="Search">
                                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                                </form>
+                                </div>
                                 <div class="mt-3">
                                     <h5>language</h5>
-                                    <div id="search-filter-language-container">
-                                        <!-- created dynamically -->
-                                    </div>
-                                    <h5 class="mt-2">topic</h5>
-                                    <select class="form-select">
-                                        <option value="">All</option>
+                                    <select id="search-filter-languages" class=" form-control" data-live-search="true" multiple>
+                                        <option>if you see this there was an error loading these :(</option>
+                                    </select>
+                                    <h5 class="mt-2">topics</h5>
+                                    <select id="search-filter-topics" class=" form-control" data-live-search="true" multiple>
+                                        <option>if you see this there was an error loading these :(</option>
                                     </select>
                                     <h5 class="mt-2">source type</h5>
                                     <div class="btn-group" role="group">
@@ -87,20 +93,43 @@
                                         <input type="radio" class="btn-check" name="search-filter-src-type" id="search-filter-src-type-closed">
                                         <label class="btn btn-outline-primary" for="search-filter-src-type-closed">closed</label>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-9">
-                        <div class="mt-2">
+                        <div class="mt-2" id="card-container">
 
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="create_tab" role="tabpanel">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                <form data-bs-theme="light">
+                    <div class="mb-3 mt-3">
+                        <label class="form-label" for="title">Title <i>*</i></label>
+                        <input class="form-control" id="title" name="title" type="text" placeholder="Title of your project idea" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="about">About your Idea <i>*</i></label>
+                        <textarea class="form-control" id="about" name="about" type="text" placeholder="Tell the world about your Idea" style="height: 8rem;"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="languages">Programming Lanuages <i>*</i></label>
+                        <select id="languages" class=" form-control" data-live-search="true" multiple>
+                            <option>if you see this there was an error loading these :(</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="topics">topics <i>*</i></label>
+                        <select id="topics" class=" form-control" data-live-search="true" multiple>
+                            <option>if you see this there was an error loading these :(</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="d-grid">
+                    <button class="btn btn-light mt-2" id="create-new-project-button" data-bs-theme="dark">submit idea</button>
+                </div>
             </div>
         </div>
     </div>
@@ -124,6 +153,12 @@
     </footer>
 </div>
 
+<script src="/js/jquery-3.7.1.min.js"></script>
 <script src="/style/bootstrap.bundle.min.js"></script>
+<script src="/js/navbar_login_manager.js"></script>
+<script src="/style/bootstrap-select.min.js"></script>
+<script src="/js/project_card_builder.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>

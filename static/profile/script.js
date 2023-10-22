@@ -10,7 +10,8 @@ const translateKeysToTitle = {
     "gender":"gender",
     "about":null,
     "interests": null,
-    "socials":null
+    "socials":null,
+    "email": "email"
 };
 
 function createUserInfoTable(userData) {
