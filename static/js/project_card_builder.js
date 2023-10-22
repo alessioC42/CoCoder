@@ -1,6 +1,8 @@
-async function buildProjectCard(id){
-    let responseProjectData = await fetch('/api/projects/'+id);
-    let projectData = await responseProjectData.json();
+async function buildProjectCard(id, projectData=undefined){
+    if (!projectData) {
+        let responseProjectData = await fetch('/api/projects/'+id);
+        projectData = await responseProjectData.json();
+    }
 
     let responseUserData = await fetch('/api/user/'+projectData.owner);
     let userData = await responseUserData.json();

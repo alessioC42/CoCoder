@@ -1,18 +1,14 @@
-const exploreLanguageSelect = document.getElementById("search-filter-languages");
 const createLanguageSelect = document.getElementById("languages");
 
-const exploreTopicSelect = document.getElementById("search-filter-topics");
 const createTopicSelect = document.getElementById("topics");
 
 
-async function loadProgrammingLanguages() {
+async function loadMultiselect() {
     let response = await fetch("/assets/programming_languages_and_topics.json");
     let { languages, topics } = await response.json();
 
     if (languages && topics) {
-        exploreLanguageSelect.innerHTML = "";
         createLanguageSelect.innerHTML = "";
-        exploreTopicSelect.innerHTML = "";
         createTopicSelect.innerHTML = "";
 
 
@@ -24,22 +20,19 @@ async function loadProgrammingLanguages() {
         }
 
         languages.forEach(language => {
-            exploreLanguageSelect.appendChild(createOption(language));
             createLanguageSelect.appendChild(createOption(language));
         });
 
         topics.forEach(topic => {
-            exploreTopicSelect.appendChild(createOption(topic));
             createTopicSelect.appendChild(createOption(topic));
         });
 
-        $("#search-filter-languages").selectpicker();
         $("#languages").selectpicker();
-        $("#search-filter-topics").selectpicker();
         $("#topics").selectpicker();
     }
 
 }
+document.getElementById("create-tab-button").addEventListener("click", loadMultiselect);
 
 document.getElementById("create-new-project-button").addEventListener("click", async () => {
     let userID = localStorage.getItem("userID");
@@ -79,12 +72,25 @@ function getValues(elem) {
     return $(`#${elem}`).val();
 }
 
-loadProgrammingLanguages();
 
 let container = document.getElementById("card-container");
 
-(async () => {
-    container.appendChild(
-        await buildProjectCard(1)
-    );
-})()
+document.getElementById("button-search").addEventListener("click", async () => {
+    let query = document.getElementById("input-search").value;
+    await search(query)
+});
+
+async function search(query) {
+    let response = await fetch("/api/explore/search?q="+encodeURIComponent(query));
+    let projects = await response.json();
+
+    if (projects.length === 0) {
+        container.innerHTML = "Nothing Found. Try searching for something else!"
+    } else {
+        container.innerHTML = ""
+    }
+
+    for (const project of projects) {
+        container.appendChild(await buildProjectCard(project.item.id));
+    }
+}

@@ -53,78 +53,61 @@
     </div>
 </nav>
 <!-- CONTENT DIV -->
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <ul class="nav nav-tabs mt-5" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" data-bs-toggle="tab" href="#explore_tab" aria-selected="true" role="tab">explore</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" data-bs-toggle="tab" href="#create_tab" aria-selected="false" role="tab" tabindex="-1">create</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade active show" id="explore_tab" role="tabpanel">
-                <div class="row">
-                    <div class="col-3" data-bs-theme="light">
-                        <div class="card mt-2">
-                            <div class="card-body">
-                                <h3 class="card-title">search</h3>
-                                <div class="d-flex">
-                                    <input class="form-control me-sm-2" type="search" placeholder="Search">
-                                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                                </div>
-                                <div class="mt-3">
-                                    <h5>language</h5>
-                                    <select id="search-filter-languages" class=" form-control" data-live-search="true" multiple>
-                                        <option>if you see this there was an error loading these :(</option>
-                                    </select>
-                                    <h5 class="mt-2">topics</h5>
-                                    <select id="search-filter-topics" class=" form-control" data-live-search="true" multiple>
-                                        <option>if you see this there was an error loading these :(</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <div class="mt-2" id="card-container">
-
-                        </div>
+<div class="container-md">
+    <h1 class="mt-3">explore</h1>
+    <ul class="nav nav-tabs mt-5" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" data-bs-toggle="tab" href="#explore_tab" aria-selected="true" role="tab">explore</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" data-bs-toggle="tab" href="#create_tab" aria-selected="false" role="tab" tabindex="-1" id="create-tab-button">create</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade active show" id="explore_tab" role="tabpanel">
+            <div class="card mt-2" data-bs-theme="light">
+                <div class="card-body">
+                    <h3 class="card-title">search</h3>
+                    <div class="d-flex">
+                        <input class="form-control me-sm-2" type="search" id="input-search" placeholder="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" id="button-search">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="create_tab" role="tabpanel">
-                <form data-bs-theme="light">
-                    <div class="mb-3 mt-3">
-                        <label class="form-label" for="title">Title <i>*</i></label>
-                        <input class="form-control" id="title" name="title" type="text" placeholder="Title of your project idea" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="about">About your Idea <i>*</i></label>
-                        <textarea class="form-control" id="about" name="about" type="text" placeholder="Tell the world about your Idea" style="height: 8rem;"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="languages">Programming Lanuages <i>*</i></label>
-                        <select id="languages" class=" form-control" data-live-search="true" multiple>
-                            <option>if you see this there was an error loading these :(</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="topics">topics <i>*</i></label>
-                        <select id="topics" class=" form-control" data-live-search="true" multiple>
-                            <option>if you see this there was an error loading these :(</option>
-                        </select>
-                    </div>
-                </form>
-                <div class="d-grid">
-                    <button class="btn btn-light mt-2" id="create-new-project-button" data-bs-theme="dark">submit idea</button>
+            <div class="mt-5 mb-5" id="card-container">
+                <div class="text-center">
+                    <h1>search for anything...</h1>
                 </div>
             </div>
         </div>
+        <div class="tab-pane fade" id="create_tab" role="tabpanel">
+            <form data-bs-theme="light">
+                <div class="mb-3 mt-3">
+                    <label class="form-label" for="title">Title <i>*</i></label>
+                    <input class="form-control" id="title" name="title" type="text" placeholder="Title of your project idea" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="about">About your Idea <i>*</i></label>
+                    <textarea class="form-control" id="about" name="about" type="text" placeholder="Tell the world about your Idea" style="height: 8rem;"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="languages">Programming Lanuages <i>*</i></label>
+                    <select id="languages" class=" form-control" data-live-search="true" multiple>
+                        <option>if you see this there was an error loading these :(</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="topics">topics <i>*</i></label>
+                    <select id="topics" class=" form-control" data-live-search="true" multiple>
+                        <option>if you see this there was an error loading these :(</option>
+                    </select>
+                </div>
+            </form>
+            <div class="d-grid">
+                <button class="btn btn-light mt-2" id="create-new-project-button" data-bs-theme="dark">submit idea</button>
+            </div>
+        </div>
     </div>
-    <div class="col-1"></div>
 </div>
 <!-- FOOTER -->
 <div class="container">
